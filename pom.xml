@@ -32,6 +32,7 @@
     <version.cz.habarta.typescript-generator.typescript-generator-maven-plugin>2.24.612</version.cz.habarta.typescript-generator.typescript-generator-maven-plugin>
     <version.org.apache.maven.plugins.maven-resources-plugin>3.1.0</version.org.apache.maven.plugins.maven-resources-plugin>
     <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
+    <version.org.treblereel.gwt.xml.mapper>0.2-SNAPSHOT</version.org.treblereel.gwt.xml.mapper>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -70,6 +71,22 @@
         <version>${version.org.glassfish.jaxb.jaxb-runtime}</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.treblereel.gwt.xml.mapper</groupId>
+        <artifactId>gwt-backend</artifactId>
+        <version>${version.org.treblereel.gwt.xml.mapper}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.treblereel.gwt.xml.mapper</groupId>
+        <artifactId>api</artifactId>
+        <version>${version.org.treblereel.gwt.xml.mapper}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.treblereel.gwt.xml.mapper</groupId>
+        <artifactId>processor</artifactId>
+        <version>${version.org.treblereel.gwt.xml.mapper}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -105,9 +122,11 @@
 
     <profile>
       <id>jpmml</id>
+
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
+
       <dependencies>
         <dependency>
           <groupId>org.jpmml</groupId>
