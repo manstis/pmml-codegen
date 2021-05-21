@@ -24,75 +24,57 @@
   <version>0.0.0</version>
 
   <properties>
-    <version.org.jpmml.pmml-model>1.5.1</version.org.jpmml.pmml-model>
-    <version.org.jpmml.pmml-agent>1.5.1</version.org.jpmml.pmml-agent>
-    <version.com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider>2.11.0</version.com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider>
-    <version.org.eclipse.persistence.org.eclipse.persistence.core>2.7.7</version.org.eclipse.persistence.org.eclipse.persistence.core>
-    <version.org.glassfish.jaxb.jaxb-runtime>2.3.3</version.org.glassfish.jaxb.jaxb-runtime>
-    <version.cz.habarta.typescript-generator.typescript-generator-maven-plugin>2.24.612</version.cz.habarta.typescript-generator.typescript-generator-maven-plugin>
-    <version.org.apache.maven.plugins.maven-resources-plugin>3.1.0</version.org.apache.maven.plugins.maven-resources-plugin>
-    <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
-    <version.org.treblereel.gwt.xml.mapper>0.2-SNAPSHOT</version.org.treblereel.gwt.xml.mapper>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.jpmml</groupId>
-        <artifactId>pmml-model</artifactId>
-        <version>${version.org.jpmml.pmml-model}</version>
-        <classifier>sources</classifier>
-      </dependency>
-
-      <dependency>
-        <groupId>org.jpmml</groupId>
-        <artifactId>pmml-agent</artifactId>
-        <version>${version.org.jpmml.pmml-agent}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.fasterxml.jackson.jaxrs</groupId>
-        <artifactId>jackson-jaxrs-json-provider</artifactId>
-        <version>${version.com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.eclipse.persistence</groupId>
-        <artifactId>org.eclipse.persistence.core</artifactId>
-        <version>${version.org.eclipse.persistence.org.eclipse.persistence.core}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.glassfish.jaxb</groupId>
-        <artifactId>jaxb-runtime</artifactId>
-        <version>${version.org.glassfish.jaxb.jaxb-runtime}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.treblereel.gwt.xml.mapper</groupId>
-        <artifactId>gwt-backend</artifactId>
-        <version>${version.org.treblereel.gwt.xml.mapper}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.treblereel.gwt.xml.mapper</groupId>
-        <artifactId>api</artifactId>
-        <version>${version.org.treblereel.gwt.xml.mapper}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.treblereel.gwt.xml.mapper</groupId>
-        <artifactId>processor</artifactId>
-        <version>${version.org.treblereel.gwt.xml.mapper}</version>
-      </dependency>
-
-    </dependencies>
-  </dependencyManagement>
-
   <profiles>
     <profile>
       <id>jaxb</id>
+
+      <properties>
+        <version.javax.xml.bind.jaxb-api>2.3.1</version.javax.xml.bind.jaxb-api>
+        <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
+        <version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate>1.1.0</version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate>
+        <version.org.treblereel.gwt.xml.mapper>0.2-SNAPSHOT</version.org.treblereel.gwt.xml.mapper>
+      </properties>
+
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${version.javax.xml.bind.jaxb-api}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-annotate</artifactId>
+            <version>${version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.treblereel.gwt.xml.mapper</groupId>
+            <artifactId>common</artifactId>
+            <version>${version.org.treblereel.gwt.xml.mapper}</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+
+      <dependencies>
+        <dependency>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.jvnet.jaxb2_commons</groupId>
+          <artifactId>jaxb2-basics-annotate</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.treblereel.gwt.xml.mapper</groupId>
+          <artifactId>common</artifactId>
+        </dependency>
+      </dependencies>
+
       <build>
         <pluginManagement>
           <plugins>
@@ -108,6 +90,23 @@
           <plugin>
             <groupId>org.jvnet.jaxb2.maven2</groupId>
             <artifactId>maven-jaxb2-plugin</artifactId>
+            <configuration>
+              <generatePackage>com.anstis.pmml.model</generatePackage>
+              <extension>true</extension>
+              <args>
+                <arg>-Xannotate</arg>
+              </args>
+              <plugins>
+                <plugin>
+                  <groupId>org.jvnet.jaxb2_commons</groupId>
+                  <artifactId>jaxb2-basics-annotate</artifactId>
+                </plugin>
+                <plugin>
+                  <groupId>org.treblereel.gwt.xml.mapper</groupId>
+                  <artifactId>common</artifactId>
+                </plugin>
+              </plugins>
+            </configuration>
             <executions>
               <execution>
                 <goals>
@@ -127,6 +126,47 @@
         <activeByDefault>true</activeByDefault>
       </activation>
 
+      <properties>
+        <version.org.jpmml.pmml-model>1.5.1</version.org.jpmml.pmml-model>
+        <version.org.jpmml.pmml-agent>1.5.1</version.org.jpmml.pmml-agent>
+        <version.com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider>2.11.0</version.com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider>
+        <version.org.eclipse.persistence.org.eclipse.persistence.core>2.7.7</version.org.eclipse.persistence.org.eclipse.persistence.core>
+        <version.com.sun.xml.bind.jaxb-core>2.3.0</version.com.sun.xml.bind.jaxb-core>
+        <version.cz.habarta.typescript-generator.typescript-generator-maven-plugin>2.24.612</version.cz.habarta.typescript-generator.typescript-generator-maven-plugin>
+        <version.org.apache.maven.plugins.maven-resources-plugin>3.1.0</version.org.apache.maven.plugins.maven-resources-plugin>
+      </properties>
+
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>org.jpmml</groupId>
+            <artifactId>pmml-model</artifactId>
+            <version>${version.org.jpmml.pmml-model}</version>
+            <classifier>sources</classifier>
+          </dependency>
+          <dependency>
+            <groupId>org.jpmml</groupId>
+            <artifactId>pmml-agent</artifactId>
+            <version>${version.org.jpmml.pmml-agent}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${version.com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.core</artifactId>
+            <version>${version.org.eclipse.persistence.org.eclipse.persistence.core}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${version.com.sun.xml.bind.jaxb-core}</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+
       <dependencies>
         <dependency>
           <groupId>org.jpmml</groupId>
@@ -134,7 +174,6 @@
           <classifier>sources</classifier>
           <type>jar</type>
         </dependency>
-
         <dependency>
           <groupId>org.jpmml</groupId>
           <artifactId>pmml-agent</artifactId>
@@ -145,23 +184,19 @@
             </exclusion>
           </exclusions>
         </dependency>
-
         <dependency>
           <groupId>com.fasterxml.jackson.jaxrs</groupId>
           <artifactId>jackson-jaxrs-json-provider</artifactId>
         </dependency>
-
         <dependency>
           <groupId>org.eclipse.persistence</groupId>
           <artifactId>org.eclipse.persistence.core</artifactId>
           <scope>provided</scope>
         </dependency>
-
         <dependency>
-          <groupId>org.glassfish.jaxb</groupId>
-          <artifactId>jaxb-runtime</artifactId>
+          <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-core</artifactId>
         </dependency>
-
       </dependencies>
 
       <build>
@@ -172,7 +207,6 @@
               <artifactId>maven-resources-plugin</artifactId>
               <version>${version.org.apache.maven.plugins.maven-resources-plugin}</version>
             </plugin>
-
             <plugin>
               <groupId>cz.habarta.typescript-generator</groupId>
               <artifactId>typescript-generator-maven-plugin</artifactId>
