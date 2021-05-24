@@ -4,18 +4,265 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:annox="http://annox.dev.java.net"
+    xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
-    jaxb:extensionBindingPrefixes="annox"
+    jaxb:extensionBindingPrefixes="inheritance annox"
     version="2.1">
 
   <jaxb:bindings schemaLocation="pmml-4-4.xsd" node="/xs:schema">
-    <jaxb:bindings multiple="true"  node="xs:element/xs:complexType">
+
+    <!-- Expose all DTOs to JsInterop and J2CL -->
+    <jaxb:bindings multiple="true" node="xs:element/xs:complexType">
       <annox:annotateClass>@jsinterop.annotations.JsType</annox:annotateClass>
       <annox:annotateClass>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateClass>
     </jaxb:bindings>
-    <jaxb:bindings node="xs:element[@name ='PMML']/xs:complexType">
-      <annox:annotateClass>@org.treblereel.gwt.xml.mapper.api.annotation.XMLMapper</annox:annotateClass>
+
+    <!-- Set generic type of model collection to IApply -->
+    <jaxb:bindings node="xs:element[@name ='Apply']/xs:complexType/xs:sequence/xs:group">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
+      </jaxb:property>
     </jaxb:bindings>
+    <!-- Set model classes to implement IApply interface -->
+    <jaxb:bindings node="xs:element[@name = 'Constant']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'FieldRef']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'NormContinuous']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'NormDiscrete']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Discretize']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'MapValues']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'TextIndex']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Apply']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Aggregate']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Lag']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IApply</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IBayesianNetworkNodes -->
+    <jaxb:bindings node="xs:element[@name ='BayesianNetworkNodes']/xs:complexType/xs:sequence/xs:choice">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IBayesianNetworkNodes"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement IBayesianNetworkNodes interface -->
+    <jaxb:bindings node="xs:element[@name = 'DiscreteNode']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IBayesianNetworkNodes</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'ContinuousNode']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IBayesianNetworkNodes</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to ICompoundPredicate -->
+    <jaxb:bindings node="xs:element[@name ='CompoundPredicate']/xs:complexType/xs:sequence/xs:sequence">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement ICompoundPredicate interface -->
+    <jaxb:bindings node="xs:element[@name = 'SimplePredicate']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundPredicate</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'CompoundPredicate']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundPredicate</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'SimpleSetPredicate']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundPredicate</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'True']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundPredicate</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'False']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundPredicate</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to ICompoundRule -->
+    <jaxb:bindings node="xs:element[@name ='CompoundRule']/xs:complexType/xs:sequence/xs:group[@ref = 'Rule']">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.ICompoundRule"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement ICompoundRule interface -->
+    <jaxb:bindings node="xs:element[@name = 'SimpleRule']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundRule</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'CompoundRule']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ICompoundRule</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IContinuousNode -->
+    <jaxb:bindings node="xs:element[@name ='ContinuousNode']/xs:complexType/xs:sequence/xs:choice">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IContinuousNode"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement IContinuousNode interface -->
+    <jaxb:bindings node="xs:element[@name = 'ContinuousConditionalProbability']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IContinuousNode</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'ContinuousDistribution']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IContinuousNode</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IDiscreteNode -->
+    <jaxb:bindings node="xs:element[@name ='DiscreteNode']/xs:complexType/xs:sequence/xs:choice">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IDiscreteNode"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement IDiscreteNode interface -->
+    <jaxb:bindings node="xs:element[@name = 'DiscreteConditionalProbability']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IDiscreteNode</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'ValueProbability']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IDiscreteNode</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IMiningModel -->
+    <jaxb:bindings node="xs:element[@name ='MiningModel']/xs:complexType/xs:sequence/xs:choice">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IMiningModel"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement IMiningModel interface -->
+    <jaxb:bindings node="xs:element[@name = 'Regression']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IMiningModel</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'DecisionTree']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IMiningModel</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IPMML -->
+    <jaxb:bindings node="xs:element[@name ='PMML']">
+      <annox:annotateClass>@org.treblereel.gwt.xml.mapper.api.annotation.XMLMapper</annox:annotateClass>
+      <jaxb:bindings node="xs:complexType/xs:sequence/xs:sequence">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.IPMML"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+    <!-- Set model classes to implement IPMML interface -->
+    <jaxb:bindings node="xs:element[@name = 'AnomalyDetectionModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'AssociationModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'BayesianNetworkModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'BaselineModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'ClusteringModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'GaussianProcessModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'GeneralRegressionModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'MiningModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'NaiveBayesModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'NearestNeighborModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'NeuralNetwork']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'RegressionModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'RuleSetModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'SequenceModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Scorecard']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'SupportVectorMachineModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'TextModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'TimeSeriesModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'TreeModel']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IPMML</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IRuleSet -->
+    <jaxb:bindings node="xs:element[@name = 'RuleSet']/xs:complexType/xs:sequence/xs:group[@ref = 'Rule']">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IRuleSet"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'SimpleRule']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IRuleSet</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'CompoundRule']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IRuleSet</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to ISequence -->
+    <jaxb:bindings node="xs:element[@name = 'Sequence']/xs:complexType/xs:sequence/xs:sequence">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.ISequence"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement ISequence interface -->
+    <jaxb:bindings node="xs:element[@name = 'Extension']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ISequence</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Delimiter']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ISequence</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'Time']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ISequence</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'SetReference']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.ISequence</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IVectorFields -->
+    <jaxb:bindings node="xs:element[@name = 'VectorFields']/xs:complexType/xs:sequence/xs:choice">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IVectorFields"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <!-- Set model classes to implement IVectorFields interface -->
+    <jaxb:bindings node="xs:element[@name = 'FieldRef']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IVectorFields</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'CategoricalPredictor']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IVectorFields</inheritance:implements>
+    </jaxb:bindings>
+
   </jaxb:bindings>
 
 </jaxb:bindings>
