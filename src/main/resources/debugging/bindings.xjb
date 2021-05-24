@@ -40,7 +40,7 @@
 
   <jaxb:bindings schemaLocation="schema.xsd" node="/xs:schema">
 
-    <jaxb:bindings node="xs:element[@name='Simple']">
+    <jaxb:bindings node="xs:element[@name='Simple']/xs:complexType">
       <annox:annotateClass>@java.lang.Deprecated</annox:annotateClass>
     </jaxb:bindings>
 

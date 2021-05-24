@@ -38,6 +38,8 @@
         <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
         <version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate>1.1.0</version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate>
         <version.org.treblereel.gwt.xml.mapper>0.2-SNAPSHOT</version.org.treblereel.gwt.xml.mapper>
+        <version.org.treblereel.j2cl.processors.annotations>0.3-SNAPSHOT</version.org.treblereel.j2cl.processors.annotations>
+        <version.com.google.jsinterop.jsinterop-annotations>2.0.0</version.com.google.jsinterop.jsinterop-annotations>
       </properties>
 
       <dependencyManagement>
@@ -62,6 +64,16 @@
             <artifactId>common</artifactId>
             <version>${version.org.treblereel.gwt.xml.mapper}</version>
           </dependency>
+          <dependency>
+            <groupId>org.treblereel.j2cl.processors</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${version.org.treblereel.j2cl.processors.annotations}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.jsinterop</groupId>
+            <artifactId>jsinterop-annotations</artifactId>
+            <version>${version.com.google.jsinterop.jsinterop-annotations}</version>
+          </dependency>
         </dependencies>
       </dependencyManagement>
 
@@ -82,7 +94,14 @@
           <groupId>org.treblereel.gwt.xml.mapper</groupId>
           <artifactId>common</artifactId>
         </dependency>
-
+        <dependency>
+          <groupId>org.treblereel.j2cl.processors</groupId>
+          <artifactId>annotations</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>com.google.jsinterop</groupId>
+          <artifactId>jsinterop-annotations</artifactId>
+        </dependency>
       </dependencies>
 
       <build>
@@ -114,6 +133,14 @@
                 <plugin>
                   <groupId>org.treblereel.gwt.xml.mapper</groupId>
                   <artifactId>common</artifactId>
+                </plugin>
+                <plugin>
+                  <groupId>org.treblereel.j2cl.processors</groupId>
+                  <artifactId>annotations</artifactId>
+                </plugin>
+                <plugin>
+                  <groupId>com.google.jsinterop</groupId>
+                  <artifactId>jsinterop-annotations</artifactId>
                 </plugin>
               </plugins>
             </configuration>
