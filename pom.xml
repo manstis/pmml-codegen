@@ -48,6 +48,11 @@
             <version>${version.javax.xml.bind.jaxb-api}</version>
           </dependency>
           <dependency>
+            <groupId>org.jvnet.jaxb2.maven2</groupId>
+            <artifactId>maven-jaxb2-plugin</artifactId>
+            <version>${version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin}</version>
+          </dependency>
+          <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics-annotate</artifactId>
             <version>${version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate}</version>
@@ -66,6 +71,10 @@
           <artifactId>jaxb-api</artifactId>
         </dependency>
         <dependency>
+          <groupId>org.jvnet.jaxb2.maven2</groupId>
+          <artifactId>maven-jaxb2-plugin</artifactId>
+        </dependency>
+        <dependency>
           <groupId>org.jvnet.jaxb2_commons</groupId>
           <artifactId>jaxb2-basics-annotate</artifactId>
         </dependency>
@@ -73,6 +82,7 @@
           <groupId>org.treblereel.gwt.xml.mapper</groupId>
           <artifactId>common</artifactId>
         </dependency>
+
       </dependencies>
 
       <build>
