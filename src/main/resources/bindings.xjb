@@ -509,9 +509,9 @@
     </jaxb:bindings>
 
     <!-- Set generic type of model collection to IPMML -->
-    <jaxb:bindings node="xs:element[@name ='PMML']">
+    <jaxb:bindings node="xs:element[@name ='PMML']/xs:complexType">
       <annox:annotateClass>@org.treblereel.gwt.xml.mapper.api.annotation.XMLMapper</annox:annotateClass>
-      <jaxb:bindings node="xs:complexType/xs:sequence/xs:sequence">
+      <jaxb:bindings node="xs:sequence/xs:sequence">
         <jaxb:property name="model">
           <jaxb:baseType name="com.anstis.pmml.model.IPMML"/>
         </jaxb:property>
