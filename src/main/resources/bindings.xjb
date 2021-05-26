@@ -52,6 +52,16 @@
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='ComplexPartialScore']/xs:complexType/xs:sequence/xs:group">
+      <jaxb:property name="expression">
+        <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='DefineFunction']/xs:complexType/xs:sequence/xs:group">
+      <jaxb:property name="expression">
+        <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
+      </jaxb:property>
+    </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='DerivedField']/xs:complexType/xs:sequence/xs:group">
       <jaxb:property name="expression">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
@@ -342,8 +352,36 @@
     <jaxb:bindings node="xs:element[@name = 'UniformDistribution']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.IDistribution</inheritance:implements>
     </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'CountTable']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IDistribution</inheritance:implements>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name = 'NormalizedCountTable']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IDistribution</inheritance:implements>
+    </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name = 'FieldRef']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.IDistribution</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of model collection to IExtension -->
+    <jaxb:bindings node="xs:element[@name ='Annotation']/xs:complexType">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='Extension']/xs:complexType">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='row']/xs:complexType">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='Timestamp']/xs:complexType">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
+      </jaxb:property>
     </jaxb:bindings>
 
     <!-- Set generic type of model collection to IFieldValue -->
@@ -352,7 +390,12 @@
         <jaxb:baseType name="com.anstis.pmml.model.IFieldValue"/>
       </jaxb:property>
     </jaxb:bindings>
-    <jaxb:bindings node="xs:complexType[@name ='COUNT-TABLE-TYPE']/xs:sequence/xs:choice">
+    <jaxb:bindings node="xs:element[@name ='CountTable']/xs:complexType/xs:sequence/xs:choice">
+      <jaxb:property name="fieldValue">
+        <jaxb:baseType name="com.anstis.pmml.model.IFieldValue"/>
+      </jaxb:property>
+    </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='NormalizedCountTable']/xs:complexType/xs:sequence/xs:choice">
       <jaxb:property name="fieldValue">
         <jaxb:baseType name="com.anstis.pmml.model.IFieldValue"/>
       </jaxb:property>
@@ -391,10 +434,11 @@
         <jaxb:baseType name="com.anstis.pmml.model.IMatrix"/>
       </jaxb:property>
     </jaxb:bindings>
+    <!-- TODO {manstis} Fix this! -->
     <!-- Set model classes to implement IMatrix interface -->
-<!--    <jaxb:bindings node="xs:complexType[@name = 'ArrayType']">-->
-<!--      <inheritance:implements>com.anstis.pmml.model.IMatrix</inheritance:implements>-->
-<!--    </jaxb:bindings>-->
+    <!--    <jaxb:bindings node="xs:complexType[@name = 'ArrayType']">-->
+    <!--      <inheritance:implements>com.anstis.pmml.model.IMatrix</inheritance:implements>-->
+    <!--    </jaxb:bindings>-->
     <jaxb:bindings node="xs:element[@name = 'MatCell']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.IMatrix</inheritance:implements>
     </jaxb:bindings>

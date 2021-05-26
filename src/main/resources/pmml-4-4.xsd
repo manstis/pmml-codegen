@@ -3209,11 +3209,14 @@
       <xs:attribute name="variance" type="xs:string"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SpectralAnalysis">
-  </xs:element>
 
-  <xs:element name="SeasonalTrendDecomposition">
-  </xs:element>
+  <!-- {manstis} Set type to String for simplified JAXB binding  -->
+  <!-- "The following elements are not used in this version of PMML and only serve as placeholders for future versions." -->
+  <!-- http://dmg.org/pmml/v4-4/TimeSeriesModel.html#xsdElement_SpectralAnalysis -->
+  <xs:element name="SpectralAnalysis" type="xs:string"/>
+  <!-- http://dmg.org/pmml/v4-4/TimeSeriesModel.html#xsdElement_SeasonalTrendDecomposition -->
+  <xs:element name="SeasonalTrendDecomposition" type="xs:string"/>
+
   <xs:element name="NeuralNetwork">
     <xs:complexType>
       <xs:sequence>
@@ -3706,20 +3709,33 @@
     </xs:choice>
   </xs:group>
 
-  <xs:element name="CountTable" type="COUNT-TABLE-TYPE"/>
+  <!-- {manstis} Expanded the COUNT_TABLE_TYPE into a nested ComplexType for improved JAXB binding -->
+  <xs:element name="CountTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:choice>
+          <xs:element ref="FieldValue" minOccurs="1" maxOccurs="unbounded"/>
+          <xs:element ref="FieldValueCount" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="sample" type="NUMBER" use="optional"/>
+    </xs:complexType>
+  </xs:element>
 
-  <xs:element name="NormalizedCountTable" type="COUNT-TABLE-TYPE"/>
-
-  <xs:complexType name="COUNT-TABLE-TYPE">
-    <xs:sequence>
-      <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:choice>
-        <xs:element ref="FieldValue" minOccurs="1" maxOccurs="unbounded"/>
-        <xs:element ref="FieldValueCount" minOccurs="1" maxOccurs="unbounded"/>
-      </xs:choice>
-    </xs:sequence>
-    <xs:attribute name="sample" type="NUMBER" use="optional"/>
-  </xs:complexType>
+  <!-- {manstis} Expanded the COUNT_TABLE_TYPE into a nested ComplexType for improved JAXB binding -->
+  <xs:element name="NormalizedCountTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:choice>
+          <xs:element ref="FieldValue" minOccurs="1" maxOccurs="unbounded"/>
+          <xs:element ref="FieldValueCount" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="sample" type="NUMBER" use="optional"/>
+    </xs:complexType>
+  </xs:element>
 
   <xs:element name="FieldValue">
     <xs:complexType>
