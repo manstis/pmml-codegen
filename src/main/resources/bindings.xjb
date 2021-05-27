@@ -439,11 +439,10 @@
         <jaxb:baseType name="com.anstis.pmml.model.IMatrix"/>
       </jaxb:property>
     </jaxb:bindings>
-    <!-- TODO {manstis} Fix this! -->
     <!-- Set model classes to implement IMatrix interface -->
-    <!--    <jaxb:bindings node="xs:complexType[@name = 'ArrayType']">-->
-    <!--      <inheritance:implements>com.anstis.pmml.model.IMatrix</inheritance:implements>-->
-    <!--    </jaxb:bindings>-->
+    <jaxb:bindings node="xs:element[@name = 'NUM-ARRAY']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.IMatrix</inheritance:implements>
+    </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name = 'MatCell']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.IMatrix</inheritance:implements>
     </jaxb:bindings>
@@ -669,7 +668,7 @@
     <jaxb:bindings node="xs:element[@name = 'REAL-SparseArray']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.IVectorInstance</inheritance:implements>
     </jaxb:bindings>
-    <jaxb:bindings node="xs:complexType[@name = 'ArrayType']">
+    <jaxb:bindings node="xs:element[@name = 'REAL-ARRAY']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.IVectorInstance</inheritance:implements>
     </jaxb:bindings>
 

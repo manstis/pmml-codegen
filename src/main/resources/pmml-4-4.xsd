@@ -301,7 +301,7 @@
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
         <xs:choice>
           <xs:element ref="REAL-SparseArray"/>
-          <xs:group ref="REAL-ARRAY"/>
+          <xs:element ref="REAL-ARRAY"/>
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="id" type="VECTOR-ID" use="required"/>
@@ -465,29 +465,43 @@
     </xs:attribute>
   </xs:complexType>
   <xs:element name="Array" type="ArrayType"/>
-  <xs:group name="NUM-ARRAY">
-    <xs:choice>
-      <xs:element ref="Array"/>
-    </xs:choice>
-  </xs:group>
 
-  <xs:group name="INT-ARRAY">
-    <xs:choice>
-      <xs:element ref="Array"/>
-    </xs:choice>
-  </xs:group>
+  <!-- {manstis} Converted to an element from group to ease JAXB binding -->
+  <xs:element name="NUM-ARRAY">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Array"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
 
-  <xs:group name="REAL-ARRAY">
-    <xs:choice>
-      <xs:element ref="Array"/>
-    </xs:choice>
-  </xs:group>
+  <!-- {manstis} Converted to an element from group to ease JAXB binding -->
+  <xs:element name="INT-ARRAY">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Array"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
 
-  <xs:group name="STRING-ARRAY">
-    <xs:choice>
-      <xs:element ref="Array"/>
-    </xs:choice>
-  </xs:group>
+  <!-- {manstis} Converted to an element from group to ease JAXB binding -->
+  <xs:element name="REAL-ARRAY">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Array"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- {manstis} Converted to an element from group to ease JAXB binding -->
+  <xs:element name="STRING-ARRAY">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="Array"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="INT-SparseArray">
     <xs:complexType>
       <xs:sequence>
@@ -530,7 +544,7 @@
   <xs:element name="Matrix">
     <xs:complexType>
       <xs:choice minOccurs="0">
-        <xs:group ref="NUM-ARRAY" maxOccurs="unbounded"/>
+        <xs:element ref="NUM-ARRAY" maxOccurs="unbounded"/>
         <xs:element ref="MatCell" maxOccurs="unbounded"/>
       </xs:choice>
       <xs:attribute name="kind" use="optional" default="any">
@@ -840,7 +854,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="NUM-ARRAY"/>
+        <xs:element ref="NUM-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -849,7 +863,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="NUM-ARRAY"/>
+        <xs:element ref="NUM-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -858,7 +872,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="NUM-ARRAY"/>
+        <xs:element ref="NUM-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -867,7 +881,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="NUM-ARRAY"/>
+        <xs:element ref="NUM-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -907,7 +921,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="STRING-ARRAY"/>
+        <xs:element ref="STRING-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -926,7 +940,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="STRING-ARRAY"/>
+        <xs:element ref="STRING-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1613,7 +1627,7 @@
 
   <xs:group name="FrequenciesType">
     <xs:sequence>
-      <xs:group ref="NUM-ARRAY" minOccurs="1" maxOccurs="3"/>
+      <xs:element ref="NUM-ARRAY" minOccurs="1" maxOccurs="3"/>
     </xs:sequence>
   </xs:group>
   <xs:element name="MultivariateStats">
@@ -1743,7 +1757,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="NUM-ARRAY"/>
+        <xs:element ref="NUM-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1805,7 +1819,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="STRING-ARRAY"/>
+        <xs:element ref="STRING-ARRAY"/>
       </xs:sequence>
       <xs:attribute name="id" type="ELEMENT-ID" use="required"/>
       <xs:attribute name="field" type="FIELD-NAME" use="required"/>
@@ -2669,7 +2683,7 @@
   <xs:element name="TimeCycle">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="INT-ARRAY" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="INT-ARRAY" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="length" type="INT-NUMBER"/>
       <xs:attribute name="type" type="VALID-TIME-SPEC"/>
@@ -2712,7 +2726,7 @@
   <xs:element name="TimeException">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="INT-ARRAY" minOccurs="1"/>
+        <xs:element ref="INT-ARRAY" minOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="type" type="TIME-EXCEPTION-TYPE"/>
       <xs:attribute name="count" type="INT-NUMBER"/>
@@ -2763,7 +2777,7 @@
   <xs:element name="Trend_ExpoSmooth">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY" minOccurs="0"/>
+        <xs:element ref="REAL-ARRAY" minOccurs="0"/>
       </xs:sequence>
       <xs:attribute name="trend" default="additive">
         <xs:simpleType>
@@ -2784,7 +2798,7 @@
   <xs:element name="Seasonality_ExpoSmooth">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
       <xs:attribute name="type" use="required">
         <xs:simpleType>
@@ -2860,7 +2874,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2877,7 +2891,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2885,7 +2899,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2944,7 +2958,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
       <xs:attribute name="difference" type="INT-NUMBER" default="0"/>
       <xs:attribute name="maximumOrder" type="INT-NUMBER"/>
@@ -2954,7 +2968,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
       <xs:attribute name="difference" type="INT-NUMBER" default="0"/>
       <xs:attribute name="maximumOrder" type="INT-NUMBER"/>
@@ -2981,7 +2995,7 @@
   <xs:element name="TransferFunctionValues">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3023,14 +3037,14 @@
   <xs:element name="FinalStateVector">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="HVector">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3047,14 +3061,14 @@
   <xs:element name="FinalNoise">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FinalPredictedNoise">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3075,7 +3089,7 @@
   <xs:element name="FinalNu">
     <xs:complexType>
       <xs:sequence>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3156,7 +3170,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3179,7 +3193,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3203,7 +3217,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
       <xs:attribute name="targetField" type="xs:string"/>
       <xs:attribute name="variance" type="xs:string"/>
@@ -4045,7 +4059,7 @@
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="Taxonomy" minOccurs="0"/>
-        <xs:group ref="STRING-ARRAY"/>
+        <xs:element ref="STRING-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4161,7 +4175,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="NUM-ARRAY"/>
+        <xs:element ref="NUM-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4171,7 +4185,7 @@
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="KohonenMap" minOccurs="0"/>
-        <xs:group ref="NUM-ARRAY" minOccurs="0"/>
+        <xs:element ref="NUM-ARRAY" minOccurs="0"/>
         <xs:element ref="Partition" minOccurs="0"/>
         <xs:element ref="Covariances" minOccurs="0"/>
       </xs:sequence>
@@ -4427,7 +4441,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
-        <xs:group ref="REAL-ARRAY"/>
+        <xs:element ref="REAL-ARRAY"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
