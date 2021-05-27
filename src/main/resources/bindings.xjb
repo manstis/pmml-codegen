@@ -18,82 +18,87 @@
       <annox:annotateClass>@jsinterop.annotations.JsType</annox:annotateClass>
       <annox:annotateClass>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateClass>
     </jaxb:bindings>
+    <!-- Expose all Enumerations to JsInterop and J2CL -->
+    <jaxb:bindings multiple="true" node="xs:simpleType[xs:restriction/xs:enumeration]">
+      <annox:annotateEnum>@jsinterop.annotations.JsType</annox:annotateEnum>
+      <annox:annotateEnum>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateEnum>
+    </jaxb:bindings>
 
     <!-- PREDICATE: Ensure xsd:choice is collapsed into an interface -->
     <jaxb:bindings node="xs:element[@name ='Attribute']/xs:complexType/xs:sequence/xs:group[@ref = 'PREDICATE']">
-      <jaxb:property name="predicate">
+      <jaxb:property name="predicate" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Segment']/xs:complexType/xs:sequence/xs:group[@ref = 'PREDICATE']">
-      <jaxb:property name="predicate">
+      <jaxb:property name="predicate" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='SimpleRule']/xs:complexType/xs:sequence/xs:group[@ref = 'PREDICATE']">
-      <jaxb:property name="predicate">
+      <jaxb:property name="predicate" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='CompoundRule']/xs:complexType/xs:sequence/xs:group[@ref = 'PREDICATE']">
-      <jaxb:property name="predicate">
+      <jaxb:property name="predicate" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Node']/xs:complexType/xs:sequence/xs:group[@ref = 'PREDICATE']">
-      <jaxb:property name="predicate">
+      <jaxb:property name="predicate" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
       </jaxb:property>
     </jaxb:bindings>
 
     <!-- Set generic type of model collection to IApply -->
     <jaxb:bindings node="xs:element[@name ='Apply']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='ComplexPartialScore']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='DefineFunction']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='DerivedField']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Mean']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Lower']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='OutputField']/xs:complexType/xs:sequence/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='TextIndex']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Upper']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Variance']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="expression">
+      <jaxb:property name="expression" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IApply"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -131,7 +136,7 @@
 
     <!-- Set generic type of model collection to IApply -->
     <jaxb:bindings node="xs:element[@name ='BaseCumHazardTables']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="baseline">
+      <jaxb:property name="baseline" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IBaseCumHazardTables"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -145,7 +150,7 @@
 
     <!-- Set generic type of model collection to IBayesianNetworkNodes -->
     <jaxb:bindings node="xs:element[@name ='BayesianNetworkNodes']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IBayesianNetworkNodes"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -159,7 +164,7 @@
 
     <!-- Set generic type of model collection to IBayesInput -->
     <jaxb:bindings node="xs:element[@name ='BayesInput']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IBayesInput"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -176,22 +181,22 @@
 
     <!-- Set generic type of model collection to IChildParent -->
     <jaxb:bindings node="xs:element[@name ='ChildParent']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="table">
+      <jaxb:property name="table" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IChildParent"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='MapValues']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="table">
+      <jaxb:property name="table" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IChildParent"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='TrainingInstances']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="table">
+      <jaxb:property name="table" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IChildParent"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='TextIndexNormalization']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="table">
+      <jaxb:property name="table" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IChildParent"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -205,7 +210,7 @@
 
     <!-- Set generic type of model collection to IComparisonMeasure -->
     <jaxb:bindings node="xs:element[@name ='ComparisonMeasure']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="measure">
+      <jaxb:property name="measure" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IComparisonMeasure"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -240,7 +245,7 @@
 
     <!-- Set generic type of model collection to ICompoundPredicate -->
     <jaxb:bindings node="xs:element[@name ='CompoundPredicate']/xs:complexType/xs:sequence/xs:sequence">
-      <jaxb:property name="predicates">
+      <jaxb:property name="predicates" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundPredicate"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -263,7 +268,7 @@
 
     <!-- Set generic type of model collection to ICompoundRule -->
     <jaxb:bindings node="xs:element[@name ='CompoundRule']/xs:complexType/xs:sequence/xs:group[@ref = 'Rule']">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ICompoundRule"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -277,7 +282,7 @@
 
     <!-- Set generic type of model collection to IContinuousDistribution -->
     <jaxb:bindings node="xs:element[@name ='ContinuousDistribution']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IContinuousDistribution"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -297,7 +302,7 @@
 
     <!-- Set generic type of model collection to IContinuousNode -->
     <jaxb:bindings node="xs:element[@name ='ContinuousNode']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IContinuousNode"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -311,7 +316,7 @@
 
     <!-- Set generic type of model collection to IDiscreteNode -->
     <jaxb:bindings node="xs:element[@name ='DiscreteNode']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IDiscreteNode"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -325,17 +330,17 @@
 
     <!-- Set generic type of model collection to IDistribution -->
     <jaxb:bindings node="xs:element[@name ='Alternate']/xs:complexType/xs:choice">
-      <jaxb:property name="distribution">
+      <jaxb:property name="distribution" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IDistribution"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Baseline']/xs:complexType/xs:choice">
-      <jaxb:property name="distribution">
+      <jaxb:property name="distribution" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IDistribution"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='TargetValueStat']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="distribution">
+      <jaxb:property name="distribution" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IDistribution"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -364,39 +369,39 @@
 
     <!-- Set generic type of model collection to IExtension -->
     <jaxb:bindings node="xs:element[@name ='Annotation']/xs:complexType">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Extension']/xs:complexType">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='row']/xs:complexType">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Timestamp']/xs:complexType">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IExtension"/>
       </jaxb:property>
     </jaxb:bindings>
 
     <!-- Set generic type of model collection to IFieldValue -->
     <jaxb:bindings node="xs:element[@name ='FieldValue']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="fieldValue">
+      <jaxb:property name="fieldValue" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IFieldValue"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='CountTable']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="fieldValue">
+      <jaxb:property name="fieldValue" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IFieldValue"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='NormalizedCountTable']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="fieldValue">
+      <jaxb:property name="fieldValue" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IFieldValue"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -410,7 +415,7 @@
 
     <!-- Set generic type of model collection to IKernal -->
     <jaxb:bindings node="xs:element[@name ='GaussianProcessModel']/xs:complexType/xs:sequence/xs:sequence/xs:choice">
-      <jaxb:property name="kernel">
+      <jaxb:property name="kernel" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IKernel"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -430,7 +435,7 @@
 
     <!-- Set generic type of model collection to IMatrix -->
     <jaxb:bindings node="xs:element[@name ='Matrix']/xs:complexType/xs:choice">
-      <jaxb:property name="matrix">
+      <jaxb:property name="matrix" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IMatrix"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -445,7 +450,7 @@
 
     <!-- Set generic type of model collection to IMaximumLikelihoodStat -->
     <jaxb:bindings node="xs:element[@name ='MaximumLikelihoodStat']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="state">
+      <jaxb:property name="state" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IMaximumLikelihoodStat"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -459,7 +464,7 @@
 
     <!-- Set generic type of model collection to IMiningModel -->
     <jaxb:bindings node="xs:element[@name ='MiningModel']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IMiningModel"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -473,7 +478,7 @@
 
     <!-- Set generic type of model collection to IModelExplanation -->
     <jaxb:bindings node="xs:element[@name ='ModelExplanation']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="explanation">
+      <jaxb:property name="explanation" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IModelExplanation"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -487,7 +492,7 @@
 
     <!-- Set generic type of model collection to INode -->
     <jaxb:bindings node="xs:element[@name ='Node']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="node">
+      <jaxb:property name="node" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.INode"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -512,18 +517,18 @@
     <jaxb:bindings node="xs:element[@name ='PMML']/xs:complexType">
       <annox:annotateClass>@org.treblereel.gwt.xml.mapper.api.annotation.XMLMapper</annox:annotateClass>
       <jaxb:bindings node="xs:sequence/xs:sequence">
-        <jaxb:property name="model">
+        <jaxb:property name="model" generateElementProperty="true">
           <jaxb:baseType name="com.anstis.pmml.model.IPMML"/>
         </jaxb:property>
       </jaxb:bindings>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='AnomalyDetectionModel']/xs:complexType/xs:sequence/xs:group">
-      <jaxb:property name="model">
+      <jaxb:property name="model" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IPMML"/>
       </jaxb:property>
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name ='Segment']/xs:complexType/xs:sequence/xs:group[@ref = 'MODEL-ELEMENT']">
-      <jaxb:property name="model">
+      <jaxb:property name="model" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IPMML"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -588,7 +593,7 @@
 
     <!-- Set generic type of model collection to IRuleSet -->
     <jaxb:bindings node="xs:element[@name = 'RuleSet']/xs:complexType/xs:sequence/xs:group[@ref = 'Rule']">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IRuleSet"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -601,7 +606,7 @@
 
     <!-- Set generic type of model collection to ISequence -->
     <jaxb:bindings node="xs:element[@name = 'Sequence']/xs:complexType/xs:sequence/xs:sequence">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ISequence"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -621,7 +626,7 @@
 
     <!-- Set generic type of model collection to ISupportVectorMachineModel -->
     <jaxb:bindings node="xs:element[@name = 'SupportVectorMachineModel']/xs:complexType/xs:sequence/xs:sequence">
-      <jaxb:property name="supportVectorMachineModel">
+      <jaxb:property name="supportVectorMachineModel" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.ISupportVectorMachineModel"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -642,7 +647,7 @@
 
     <!-- Set generic type of model collection to IVectorFields -->
     <jaxb:bindings node="xs:element[@name = 'VectorFields']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property>
+      <jaxb:property generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IVectorFields"/>
       </jaxb:property>
     </jaxb:bindings>
@@ -656,7 +661,7 @@
 
     <!-- Set generic type of model collection to IVectorInstance -->
     <jaxb:bindings node="xs:element[@name = 'VectorInstance']/xs:complexType/xs:sequence/xs:choice">
-      <jaxb:property name="instance">
+      <jaxb:property name="instance" generateElementProperty="true">
         <jaxb:baseType name="com.anstis.pmml.model.IVectorInstance"/>
       </jaxb:property>
     </jaxb:bindings>
