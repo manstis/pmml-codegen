@@ -515,6 +515,7 @@
     <!-- Set generic type of model collection to IPMML -->
     <jaxb:bindings node="xs:element[@name ='PMML']/xs:complexType">
       <annox:annotateClass>@org.treblereel.gwt.xml.mapper.api.annotation.XMLMapper</annox:annotateClass>
+      <annox:annotateClass>@org.treblereel.gwt.xml.mapper.api.annotation.Configuration(additionalAnnotation = {@org.treblereel.gwt.xml.mapper.api.annotation.Configuration.ConfigurationAnnotation(value = jsinterop.annotations.JsType.class), @org.treblereel.gwt.xml.mapper.api.annotation.Configuration.ConfigurationAnnotation(value = org.treblereel.j2cl.processors.annotations.GWT3Export.class)})</annox:annotateClass>
       <jaxb:bindings node="xs:sequence/xs:sequence">
         <jaxb:property name="model" generateElementProperty="true">
           <jaxb:baseType name="com.anstis.pmml.model.IPMML"/>
