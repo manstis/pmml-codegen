@@ -5,7 +5,7 @@ target/
 .idea
 
 # Transient desination for jpmml-model source code
-src/main/java/com/anstis/pmml/model/
+#src/main/java/com/anstis/pmml/model/
 
 # Transient for cxsd code generation
 cache/
