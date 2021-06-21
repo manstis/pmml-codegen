@@ -13,6 +13,9 @@
 
     <jaxb:globalBindings choiceContentProperty="true"/>
 
+    <!-- ================ -->
+    <!-- J2CL INTEGRATION -->
+    <!-- ================ -->
     <!-- Expose all DTOs to JsInterop and J2CL -->
     <jaxb:bindings multiple="true" node="xs:element/xs:complexType">
       <annox:annotateClass>@jsinterop.annotations.JsType</annox:annotateClass>
@@ -24,6 +27,9 @@
       <annox:annotateEnum>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateEnum>
     </jaxb:bindings>
 
+    <!-- ============ -->
+    <!-- POLYMORPHISM -->
+    <!-- ============ -->
     <!-- PREDICATE: Ensure xsd:choice is collapsed into an interface -->
     <jaxb:bindings node="xs:element[@name ='Attribute']/xs:complexType/xs:sequence/xs:group[@ref = 'PREDICATE']">
       <jaxb:property name="predicate" generateElementProperty="true">
@@ -671,6 +677,94 @@
     </jaxb:bindings>
     <jaxb:bindings node="xs:element[@name = 'REAL-ARRAY']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.IVectorInstance</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- ========================= -->
+    <!-- API INTERFACE INHERITANCE -->
+    <!-- ========================= -->
+    <!-- PMML -->
+    <jaxb:bindings node="xs:element[@name ='PMML']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.PMML</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Header']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Header"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'MiningBuildTask']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.MiningBuildTask"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'DataDictionary']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DataDictionary"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'TransformationDictionary']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.TransformationDictionary"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Scorecard -->
+    <jaxb:bindings node="xs:element[@name ='Scorecard']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Scorecard</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'MiningSchema']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.MiningSchema"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Output']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Output"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelStats']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ModelStats"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelExplanation']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ModelExplanation"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Targets']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Targets"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LocalTransformations']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.LocalTransformations"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Characteristics']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Characteristics"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelVerification']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ModelVerification"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'functionName']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.MININGFUNCTION"/>
+        </jaxb:property>
+      </jaxb:bindings>
     </jaxb:bindings>
 
   </jaxb:bindings>
