@@ -712,6 +712,51 @@
       </jaxb:bindings>
     </jaxb:bindings>
 
+    <!-- Header -->
+    <jaxb:bindings node="xs:element[@name ='Header']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Header</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Application']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Application"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Annotation']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Annotation"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Timestamp']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Timestamp"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Application -->
+    <jaxb:bindings node="xs:element[@name ='Application']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Application</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Annotation -->
+    <jaxb:bindings node="xs:element[@name ='Annotation']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Annotation</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Timestamp -->
+    <jaxb:bindings node="xs:element[@name ='Timestamp']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Timestamp</inheritance:implements>
+    </jaxb:bindings>
+
     <!-- Scorecard -->
     <jaxb:bindings node="xs:element[@name ='Scorecard']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.Scorecard</inheritance:implements>
