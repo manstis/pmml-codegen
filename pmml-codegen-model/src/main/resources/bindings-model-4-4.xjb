@@ -757,6 +757,171 @@
       <inheritance:implements>com.anstis.pmml.model.api.Timestamp</inheritance:implements>
     </jaxb:bindings>
 
+    <!-- MiningBuildTask -->
+    <jaxb:bindings node="xs:element[@name ='MiningBuildTask']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.MiningBuildTask</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- DataDictionary -->
+    <jaxb:bindings node="xs:element[@name ='DataDictionary']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.DataDictionary</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'DataField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DataField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Taxonomy']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Taxonomy"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- DataField -->
+    <jaxb:bindings node="xs:element[@name ='DataField']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.DataField</inheritance:implements>
+      <jaxb:bindings node="xs:attribute[@name = 'optype']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OPTYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:sequence/xs:element[@ref = 'Interval']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Interval"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:sequence/xs:element[@ref = 'Value']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Value"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Interval -->
+    <jaxb:bindings node="xs:element[@name ='Interval']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Interval</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Value -->
+    <jaxb:bindings node="xs:element[@name ='Value']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Value</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Taxonomy -->
+    <jaxb:bindings node="xs:element[@name ='Taxonomy']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Taxonomy</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ChildParent']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ChildParent"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TransformationDictionary -->
+    <jaxb:bindings node="xs:element[@name ='TransformationDictionary']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.TransformationDictionary</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'DefineFunction']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DefineFunction"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'DerivedField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DerivedField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- DefineFunction -->
+    <jaxb:bindings node="xs:element[@name ='DefineFunction']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.DefineFunction</inheritance:implements>
+      <jaxb:bindings node="xs:attribute[@name = 'optype']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OPTYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ParameterField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ParameterField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- DerivedField -->
+    <jaxb:bindings node="xs:element[@name ='DerivedField']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.DerivedField</inheritance:implements>
+      <jaxb:bindings node="xs:attribute[@name = 'optype']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OPTYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Value']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Value"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
     <!-- Scorecard -->
     <jaxb:bindings node="xs:element[@name ='Scorecard']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.Scorecard</inheritance:implements>
