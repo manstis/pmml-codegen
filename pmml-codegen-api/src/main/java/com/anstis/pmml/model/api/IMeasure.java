@@ -1,5 +1,5 @@
 package com.anstis.pmml.model.api;
 
-public interface IPMML {
+public interface IMeasure {
 
 }

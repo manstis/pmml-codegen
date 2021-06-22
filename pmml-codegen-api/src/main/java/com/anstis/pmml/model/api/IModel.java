@@ -1,5 +1,5 @@
 package com.anstis.pmml.model.api;
 
-public interface ICompoundPredicate {
+public interface IModel {
 
 }
