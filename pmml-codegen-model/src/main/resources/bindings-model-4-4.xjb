@@ -979,14 +979,14 @@
     <!-- MiningSchema -->
     <jaxb:bindings node="xs:element[@name ='MiningSchema']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.MiningSchema</inheritance:implements>
-      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
-        <jaxb:property>
-          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
-        </jaxb:property>
-      </jaxb:bindings>
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'MiningField']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.MiningField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
         </jaxb:property>
       </jaxb:bindings>
     </jaxb:bindings>
@@ -1022,6 +1022,61 @@
       <jaxb:bindings node="xs:attribute[@name = 'invalidValueTreatment']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.INVALIDVALUETREATMENTMETHOD"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Output -->
+    <jaxb:bindings node="xs:element[@name ='Output']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Output</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'OutputField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OutputField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- OutputField -->
+    <jaxb:bindings node="xs:element[@name ='OutputField']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.OutputField</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:sequence/xs:element[@ref = 'Decisions']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Decisions"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:sequence/xs:element[@ref = 'Value']">
+        <jaxb:property name="valueAttribute">
+          <jaxb:baseType name="com.anstis.pmml.model.api.Value"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'optype']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OPTYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'feature']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.RESULTFEATURE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'ruleFeature']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.RULEFEATURE"/>
         </jaxb:property>
       </jaxb:bindings>
     </jaxb:bindings>

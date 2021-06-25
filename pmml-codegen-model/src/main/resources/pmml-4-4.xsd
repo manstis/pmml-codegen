@@ -1189,13 +1189,7 @@
         <xs:sequence minOccurs="0" maxOccurs="1">
           <xs:element ref="Decisions" minOccurs="0" maxOccurs="1"/>
           <xs:group ref="EXPRESSION" minOccurs="1" maxOccurs="1"/>
-          <xs:element ref="Value" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:appinfo>
-                <jxb:property name="valueAttribute"/>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
+          <xs:element ref="Value" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:sequence>
       <xs:attribute name="name" type="FIELD-NAME" use="required"/>
@@ -1203,9 +1197,13 @@
       <xs:attribute name="optype" type="OPTYPE"/>
       <xs:attribute name="dataType" type="DATATYPE" use="required"/>
       <xs:attribute name="targetField" type="FIELD-NAME"/>
-      <xs:attribute name="feature" type="RESULT-FEATURE" default="predictedValue"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="feature" type="RESULT-FEATURE" default="predictedValue"/>-->
+      <xs:attribute name="feature" type="RESULT-FEATURE"/>
       <xs:attribute name="value" type="xs:string"/>
-      <xs:attribute name="ruleFeature" type="RULE-FEATURE" default="consequent"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="ruleFeature" type="RULE-FEATURE" default="consequent"/>-->
+      <xs:attribute name="ruleFeature" type="RULE-FEATURE"/>
       <xs:attribute name="algorithm" default="exclusiveRecommendation">
         <xs:simpleType>
           <xs:restriction base="xs:string">
