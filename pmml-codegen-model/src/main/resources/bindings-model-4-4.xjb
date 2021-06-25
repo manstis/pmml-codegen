@@ -650,7 +650,6 @@
       <inheritance:implements>com.anstis.pmml.model.api.ISupportVectorMachineModel</inheritance:implements>
     </jaxb:bindings>
 
-
     <!-- Set generic type of model collection to IVectorFields -->
     <jaxb:bindings node="xs:element[@name = 'VectorFields']/xs:complexType/xs:sequence/xs:choice">
       <jaxb:property generateElementProperty="true">
@@ -973,6 +972,56 @@
       <jaxb:bindings node="xs:attribute[@name = 'functionName']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.MININGFUNCTION"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MiningSchema -->
+    <jaxb:bindings node="xs:element[@name ='MiningSchema']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.MiningSchema</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'MiningField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.MiningField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MiningField -->
+    <jaxb:bindings node="xs:element[@name ='MiningField']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.MiningField</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'usageType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.FIELDUSAGETYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'optype']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OPTYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'outliers']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OUTLIERTREATMENTMETHOD"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'missingValueTreatment']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.MISSINGVALUETREATMENTMETHOD"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'invalidValueTreatment']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.INVALIDVALUETREATMENTMETHOD"/>
         </jaxb:property>
       </jaxb:bindings>
     </jaxb:bindings>
