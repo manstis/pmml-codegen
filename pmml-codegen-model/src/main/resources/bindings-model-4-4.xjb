@@ -949,13 +949,13 @@
           <jaxb:baseType name="com.anstis.pmml.model.api.Output"/>
         </jaxb:property>
       </jaxb:bindings>
-      <!-- ^^^ DONE! ^^^ -->
-      <!-- vvv TO DO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelStats']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.ModelStats"/>
         </jaxb:property>
       </jaxb:bindings>
+      <!-- ^^^ DONE! ^^^ -->
+      <!-- vvv TO DO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelExplanation']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.ModelExplanation"/>
@@ -1141,7 +1141,6 @@
           <jaxb:baseType name="com.anstis.pmml.model.api.ContStats"/>
         </jaxb:property>
       </jaxb:bindings>
-      <!-- vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Anova']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Anova"/>
@@ -1215,6 +1214,21 @@
       <jaxb:bindings node="xs:sequence/xs:group[@ref = 'FrequenciesType']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Anova -->
+    <jaxb:bindings node="xs:element[@name ='Anova']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Anova</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'AnovaRow']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.AnovaRow"/>
         </jaxb:property>
       </jaxb:bindings>
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
