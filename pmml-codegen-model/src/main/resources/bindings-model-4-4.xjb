@@ -1008,7 +1008,7 @@
         </jaxb:property>
       </jaxb:bindings>
       <!-- ^^^ DONE! ^^^ -->
-      <!-- vvv TO DO vvv -->
+      <!-- vvv TODO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Targets']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Targets"/>
@@ -1286,6 +1286,16 @@
       </jaxb:bindings>
     </jaxb:bindings>
 
+    <!-- AnovaRow -->
+    <jaxb:bindings node="xs:element[@name ='AnovaRow']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.AnovaRow</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
     <!-- ModelExplanation -->
     <jaxb:bindings node="xs:element[@name ='ModelExplanation']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.ModelExplanation</inheritance:implements>
@@ -1391,9 +1401,145 @@
       </jaxb:bindings>
     </jaxb:bindings>
 
+    <!-- ModelLiftGraph -->
+    <jaxb:bindings node="xs:element[@name ='ModelLiftGraph']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ModelLiftGraph</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LiftGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.LiftGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- OptimumLiftGraph -->
+    <jaxb:bindings node="xs:element[@name ='OptimumLiftGraph']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.OptimumLiftGraph</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LiftGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.LiftGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- RandomLiftGraph -->
+    <jaxb:bindings node="xs:element[@name ='RandomLiftGraph']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.RandomLiftGraph</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LiftGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.LiftGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- LiftGraph -->
+    <jaxb:bindings node="xs:element[@name ='LiftGraph']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.LiftGraph</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'XCoordinates']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.XCoordinates"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'YCoordinates']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.YCoordinates"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'BoundaryValues']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.BoundaryValues"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'BoundaryValueMeans']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.BoundaryValueMeans"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- XCoordinates -->
+    <jaxb:bindings node="xs:element[@name ='XCoordinates']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.XCoordinates</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'NUM-ARRAY']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- YCoordinates -->
+    <jaxb:bindings node="xs:element[@name ='YCoordinates']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.YCoordinates</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'NUM-ARRAY']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- BoundaryValues -->
+    <jaxb:bindings node="xs:element[@name ='BoundaryValues']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.BoundaryValues</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'NUM-ARRAY']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- BoundaryValueMeans -->
+    <jaxb:bindings node="xs:element[@name ='BoundaryValueMeans']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.BoundaryValueMeans</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'NUM-ARRAY']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
     <!-- ROC -->
     <jaxb:bindings node="xs:element[@name ='ROC']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.ROC</inheritance:implements>
+      <!-- vvv TODO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ROCGraph']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.ROCGraph"/>
@@ -1406,9 +1552,59 @@
       </jaxb:bindings>
     </jaxb:bindings>
 
+    <!-- ROCGraph -->
+    <jaxb:bindings node="xs:element[@name ='ROCGraph']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ROCGraph</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'XCoordinates']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.XCoordinates"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'YCoordinates']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.YCoordinates"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'BoundaryValues']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.BoundaryValues"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
     <!-- ClusteringModelQuality -->
     <jaxb:bindings node="xs:element[@name ='ClusteringModelQuality']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.ClusteringModelQuality</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MultivariateStats -->
+    <jaxb:bindings node="xs:element[@name ='MultivariateStats']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.MultivariateStats</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'MultivariateStat']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.MultivariateStat"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MultivariateStat -->
+    <jaxb:bindings node="xs:element[@name ='MultivariateStat']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.MultivariateStat</inheritance:implements>
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
