@@ -17,11 +17,15 @@
     <!-- J2CL INTEGRATION -->
     <!-- ================ -->
     <!-- Expose all DTOs to JsInterop and J2CL -->
+    <!-- 'multiple' is an undocumented, internal attribute that allows a pattern to match multiple nodes -->
+    <!-- See https://download.oracle.com/javaee-archive/jaxb.java.net/users/2011/04/10037.html -->
     <jaxb:bindings multiple="true" node="xs:element/xs:complexType">
       <annox:annotateClass>@jsinterop.annotations.JsType</annox:annotateClass>
       <annox:annotateClass>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateClass>
     </jaxb:bindings>
     <!-- Expose all Enumerations to JsInterop and J2CL -->
+    <!-- 'multiple' is an undocumented, internal attribute that allows a pattern to match multiple nodes -->
+    <!-- See https://download.oracle.com/javaee-archive/jaxb.java.net/users/2011/04/10037.html -->
     <jaxb:bindings multiple="true" node="xs:simpleType[xs:restriction/xs:enumeration]">
       <annox:annotateEnum>@jsinterop.annotations.JsType</annox:annotateEnum>
       <annox:annotateEnum>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateEnum>
@@ -1834,7 +1838,218 @@
       <inheritance:implements>com.anstis.pmml.model.api.Row</inheritance:implements>
     </jaxb:bindings>
 
-    <!-- TODO ALL EXPRESSION TYPES!! -->
+    <!-- ================ -->
+    <!-- EXPRESSION TYPES -->
+    <!-- ================ -->
+    <!-- Constant -->
+    <jaxb:bindings node="xs:element[@name ='Constant']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Constant</inheritance:implements>
+      <jaxb:bindings node="xs:simpleContent/xs:extension/xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- FieldRef -->
+    <jaxb:bindings node="xs:element[@name ='FieldRef']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.FieldRef</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- NormContinuous -->
+    <jaxb:bindings node="xs:element[@name ='NormContinuous']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.NormContinuous</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LinearNorm']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.LinearNorm"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'outliers']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OUTLIERTREATMENTMETHOD"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- LinearNorm -->
+    <jaxb:bindings node="xs:element[@name ='LinearNorm']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.LinearNorm</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- NormDiscrete -->
+    <jaxb:bindings node="xs:element[@name ='NormDiscrete']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.NormDiscrete</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Discretize -->
+    <jaxb:bindings node="xs:element[@name ='Discretize']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Discretize</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'DiscretizeBin']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DiscretizeBin"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- DiscretizeBin -->
+    <jaxb:bindings node="xs:element[@name ='DiscretizeBin']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.DiscretizeBin</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Interval']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Interval"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- MapValues -->
+    <jaxb:bindings node="xs:element[@name ='MapValues']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.MapValues</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'FieldColumnPair']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.FieldColumnPair"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'dataType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DATATYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- FieldColumnPair -->
+    <jaxb:bindings node="xs:element[@name ='FieldColumnPair']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.FieldColumnPair</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TextIndex -->
+    <jaxb:bindings node="xs:element[@name ='TextIndex']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.TextIndex</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'TextIndexNormalization']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.TextIndexNormalization"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TextIndexNormalization -->
+    <jaxb:bindings node="xs:element[@name ='TextIndexNormalization']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.TextIndexNormalization</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TableLocator -->
+    <jaxb:bindings node="xs:element[@name ='TableLocator']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.TableLocator</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Apply -->
+    <jaxb:bindings node="xs:element[@name ='Apply']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Apply</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'invalidValueTreatment']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.INVALIDVALUETREATMENTMETHOD"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Aggregate -->
+    <jaxb:bindings node="xs:element[@name ='Aggregate']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Aggregate</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Lag -->
+    <jaxb:bindings node="xs:element[@name ='Lag']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Lag</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'BlockIndicator']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.BlockIndicator"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- BlockIndicator -->
+    <jaxb:bindings node="xs:element[@name ='BlockIndicator']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.BlockIndicator</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
 
   </jaxb:bindings>
 

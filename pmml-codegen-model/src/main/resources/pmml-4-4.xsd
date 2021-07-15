@@ -36,7 +36,9 @@
       <xs:attribute name="function" type="xs:string" use="required"/>
       <xs:attribute name="mapMissingTo" type="xs:string"/>
       <xs:attribute name="defaultValue" type="xs:string"/>
-      <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD" default="returnInvalid"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD" default="returnInvalid"/> -->
+      <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="MiningModel">
@@ -2424,7 +2426,9 @@
       </xs:sequence>
       <xs:attribute name="mapMissingTo" type="NUMBER"/>
       <xs:attribute name="field" type="FIELD-NAME" use="required"/>
-      <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD" default="asIs"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD" default="asIs"/> -->
+      <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD"/>
     </xs:complexType>
   </xs:element>
 
