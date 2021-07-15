@@ -27,6 +27,54 @@
       <annox:annotateEnum>@org.treblereel.j2cl.processors.annotations.GWT3Export</annox:annotateEnum>
     </jaxb:bindings>
 
+    <!-- ================== -->
+    <!-- PRIMITIVES MAPPING -->
+    <!-- ================== -->
+    <!-- Set up generic Array types support -->
+    <jaxb:bindings node="xs:complexType[@name = 'ArrayType']">
+      <inheritance:implements>com.anstis.pmml.model.api.ArrayType</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- Set generic type of NUM-ARRAY -->
+    <jaxb:bindings node="xs:element[@name = 'NUM-ARRAY']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.NUMARRAY</inheritance:implements>
+      <jaxb:bindings node="xs:choice">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ArrayType"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Set generic type of INT-ARRAY -->
+    <jaxb:bindings node="xs:element[@name = 'INT-ARRAY']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.INTARRAY</inheritance:implements>
+      <jaxb:bindings node="xs:choice">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ArrayType"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Set generic type of REAL-ARRAY-->
+    <jaxb:bindings node="xs:element[@name = 'REAL-ARRAY']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.REALARRAY</inheritance:implements>
+      <jaxb:bindings node="xs:choice">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ArrayType"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Set generic type of STRING-ARRAY-->
+    <jaxb:bindings node="xs:element[@name = 'STRING-ARRAY']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.STRINGARRAY</inheritance:implements>
+      <jaxb:bindings node="xs:choice">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ArrayType"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
     <!-- ============ -->
     <!-- POLYMORPHISM -->
     <!-- ============ -->
@@ -954,13 +1002,13 @@
           <jaxb:baseType name="com.anstis.pmml.model.api.ModelStats"/>
         </jaxb:property>
       </jaxb:bindings>
-      <!-- ^^^ DONE! ^^^ -->
-      <!-- vvv TO DO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelExplanation']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.ModelExplanation"/>
         </jaxb:property>
       </jaxb:bindings>
+      <!-- ^^^ DONE! ^^^ -->
+      <!-- vvv TO DO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Targets']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Targets"/>
@@ -1231,6 +1279,136 @@
           <jaxb:baseType name="com.anstis.pmml.model.api.AnovaRow"/>
         </jaxb:property>
       </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ModelExplanation -->
+    <jaxb:bindings node="xs:element[@name ='ModelExplanation']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ModelExplanation</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Correlations']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Correlations"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- PredictiveModelQuality -->
+    <jaxb:bindings node="xs:element[@name ='PredictiveModelQuality']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.PredictiveModelQuality</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ConfusionMatrix']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ConfusionMatrix"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LiftData']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.LiftData"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ROC']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ROC"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ConfusionMatrix -->
+    <jaxb:bindings node="xs:element[@name ='ConfusionMatrix']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ConfusionMatrix</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ClassLabels']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ClassLabels"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Matrix']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Matrix"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ClassLabels -->
+    <jaxb:bindings node="xs:element[@name ='ClassLabels']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ClassLabels</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'STRING-ARRAY']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.STRINGARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Matrix -->
+    <jaxb:bindings node="xs:element[@name ='Matrix']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Matrix</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- LiftData -->
+    <jaxb:bindings node="xs:element[@name ='LiftData']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.LiftData</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ModelLiftGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ModelLiftGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'OptimumLiftGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OptimumLiftGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'RandomLiftGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.RandomLiftGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ROC -->
+    <jaxb:bindings node="xs:element[@name ='ROC']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ROC</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ROCGraph']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ROCGraph"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ClusteringModelQuality -->
+    <jaxb:bindings node="xs:element[@name ='ClusteringModelQuality']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ClusteringModelQuality</inheritance:implements>
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
