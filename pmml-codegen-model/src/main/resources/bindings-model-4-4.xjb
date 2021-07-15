@@ -1007,13 +1007,13 @@
           <jaxb:baseType name="com.anstis.pmml.model.api.ModelExplanation"/>
         </jaxb:property>
       </jaxb:bindings>
-      <!-- ^^^ DONE! ^^^ -->
-      <!-- vvv TODO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Targets']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Targets"/>
         </jaxb:property>
       </jaxb:bindings>
+      <!-- ^^^ DONE! ^^^ -->
+      <!-- vvv TODO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LocalTransformations']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.LocalTransformations"/>
@@ -1539,7 +1539,6 @@
     <!-- ROC -->
     <jaxb:bindings node="xs:element[@name ='ROC']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.ROC</inheritance:implements>
-      <!-- vvv TODO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ROCGraph']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.ROCGraph"/>
@@ -1605,6 +1604,96 @@
     <!-- MultivariateStat -->
     <jaxb:bindings node="xs:element[@name ='MultivariateStat']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.MultivariateStat</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Targets -->
+    <jaxb:bindings node="xs:element[@name ='Targets']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Targets</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Target']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Target"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Target -->
+    <jaxb:bindings node="xs:element[@name ='Target']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Target</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'TargetValue']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.TargetValue"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:attribute[@name = 'optype']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.OPTYPE"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- TargetValue -->
+    <jaxb:bindings node="xs:element[@name ='TargetValue']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.TargetValue</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Partition']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Partition"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Partition -->
+    <jaxb:bindings node="xs:element[@name ='Partition']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Partition</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'PartitionFieldStats']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.PartitionFieldStats"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- PartitionFieldStats -->
+    <jaxb:bindings node="xs:element[@name ='PartitionFieldStats']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.PartitionFieldStats</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Counts']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Counts"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'NumericInfo']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.NumericInfo"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:group[@ref = 'FrequenciesType']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+        </jaxb:property>
+      </jaxb:bindings>
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>

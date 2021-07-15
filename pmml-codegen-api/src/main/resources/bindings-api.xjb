@@ -332,6 +332,11 @@
         <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
       </jaxb:property>
     </jaxb:bindings>
+    <jaxb:bindings node="xs:element[@name ='PartitionFieldStats']/xs:complexType/xs:sequence/xs:group[@ref = 'FrequenciesType']">
+      <jaxb:property>
+        <jaxb:baseType name="com.anstis.pmml.model.api.NUMARRAY"/>
+      </jaxb:property>
+    </jaxb:bindings>
 
     <!-- Override clashing property names -->
     <jaxb:bindings node="xs:element[@name ='OutputField']/xs:complexType">
