@@ -1012,8 +1012,6 @@
           <jaxb:baseType name="com.anstis.pmml.model.api.Targets"/>
         </jaxb:property>
       </jaxb:bindings>
-      <!-- ^^^ DONE! ^^^ -->
-      <!-- vvv TODO vvv -->
       <jaxb:bindings node="xs:sequence/xs:element[@ref = 'LocalTransformations']">
         <jaxb:property>
           <jaxb:baseType name="com.anstis.pmml.model.api.LocalTransformations"/>
@@ -1700,6 +1698,143 @@
         </jaxb:property>
       </jaxb:bindings>
     </jaxb:bindings>
+
+    <!-- LocalTransformations -->
+    <jaxb:bindings node="xs:element[@name ='LocalTransformations']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.LocalTransformations</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'DerivedField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.DerivedField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Characteristics -->
+    <jaxb:bindings node="xs:element[@name ='Characteristics']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Characteristics</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Characteristic']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Characteristic"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Characteristic -->
+    <jaxb:bindings node="xs:element[@name ='Characteristic']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Characteristic</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Attribute']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Attribute"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- Attribute -->
+    <jaxb:bindings node="xs:element[@name ='Attribute']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Attribute</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'ComplexPartialScore']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.ComplexPartialScore"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ComplexPartialScore -->
+    <jaxb:bindings node="xs:element[@name ='ComplexPartialScore']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ComplexPartialScore</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- ModelVerification -->
+    <jaxb:bindings node="xs:element[@name ='ModelVerification']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.ModelVerification</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'VerificationFields']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.VerificationFields"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'InlineTable']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.InlineTable"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- VerificationFields -->
+    <jaxb:bindings node="xs:element[@name ='VerificationFields']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.VerificationFields</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'VerificationField']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.VerificationField"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- VerificationField -->
+    <jaxb:bindings node="xs:element[@name ='VerificationField']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.VerificationField</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- InlineTable -->
+    <jaxb:bindings node="xs:element[@name ='InlineTable']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.InlineTable</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'row']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Row"/>
+        </jaxb:property>
+      </jaxb:bindings>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- row -->
+    <jaxb:bindings node="xs:element[@name ='row']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.Row</inheritance:implements>
+    </jaxb:bindings>
+
+    <!-- TODO ALL EXPRESSION TYPES!! -->
 
   </jaxb:bindings>
 
