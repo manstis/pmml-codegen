@@ -31,13 +31,20 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
+
     <version.javax.xml.bind.jaxb-api>2.3.1</version.javax.xml.bind.jaxb-api>
     <version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>0.14.0</version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin>
     <version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate>1.1.0</version.org.jvnet.jaxb2_commons.jaxb2-basics-annotate>
     <version.org.jvnet.jaxb2_commons.jaxb2-basics>0.12.0</version.org.jvnet.jaxb2_commons.jaxb2-basics>
-    <version.org.treblereel.gwt.xml.mapper>0.3-SNAPSHOT</version.org.treblereel.gwt.xml.mapper>
-    <version.org.treblereel.j2cl.processors.annotations>0.3-SNAPSHOT</version.org.treblereel.j2cl.processors.annotations>
-    <version.com.google.jsinterop.jsinterop-annotations>2.0.0</version.com.google.jsinterop.jsinterop-annotations>
+    <version.org.treblereel.gwt.xml.mapper>0.3</version.org.treblereel.gwt.xml.mapper>
+    <version.org.treblereel.j2cl.processors.annotations>0.3</version.org.treblereel.j2cl.processors.annotations>
+    <version.com.vertispan.jsinterop>1.0.0-SNAPSHOT</version.com.vertispan.jsinterop>
+
+    <version.org.apache.maven.plugins.maven-jar-plugin>3.2.0</version.org.apache.maven.plugins.maven-jar-plugin>
+    <version.org.apache.maven.plugins.maven-source-plugin>3.2.1</version.org.apache.maven.plugins.maven-source-plugin>
+
+    <vertispan.j2cl.repo.url>https://repo.vertispan.com/j2cl/</vertispan.j2cl.repo.url>
+    <vertispan.gwt-snapshot.repo.url>https://repo.vertispan.com/gwt-snapshot/</vertispan.gwt-snapshot.repo.url>
   </properties>
 
   <dependencyManagement>
@@ -78,11 +85,51 @@
         <version>${version.org.treblereel.j2cl.processors.annotations}</version>
       </dependency>
       <dependency>
-        <groupId>com.google.jsinterop</groupId>
-        <artifactId>jsinterop-annotations</artifactId>
-        <version>${version.com.google.jsinterop.jsinterop-annotations}</version>
+        <groupId>com.vertispan.jsinterop</groupId>
+        <artifactId>base</artifactId>
+        <version>${version.com.vertispan.jsinterop}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jvnet.jaxb2.maven2</groupId>
+          <artifactId>maven-jaxb2-plugin</artifactId>
+          <version>${version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.org.apache.maven.plugins.maven-jar-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.org.apache.maven.plugins.maven-source-plugin}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>vertispan-j2cl-snapshots</id>
+      <name>Vertispan hosted artifacts-releases</name>
+      <url>${vertispan.j2cl.repo.url}</url>
+    </repository>
+    <repository>
+      <id>vertispan-gwt-snapshots</id>
+      <name>Vertispan Snapshots</name>
+      <url>${vertispan.gwt-snapshot.repo.url}</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+  </repositories>
 
 </project>

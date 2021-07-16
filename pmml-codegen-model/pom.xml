@@ -57,22 +57,12 @@
       <artifactId>annotations</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.google.jsinterop</groupId>
-      <artifactId>jsinterop-annotations</artifactId>
+      <groupId>com.vertispan.jsinterop</groupId>
+      <artifactId>base</artifactId>
     </dependency>
   </dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.jvnet.jaxb2.maven2</groupId>
-          <artifactId>maven-jaxb2-plugin</artifactId>
-          <version>${version.org.jvnet.jaxb2.maven2.maven-jaxb2-plugin}</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
       <plugin>
         <groupId>org.jvnet.jaxb2.maven2</groupId>
