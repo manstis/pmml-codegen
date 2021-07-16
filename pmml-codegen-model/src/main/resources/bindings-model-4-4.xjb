@@ -733,6 +733,11 @@
     <!-- ========================= -->
     <!-- API INTERFACE INHERITANCE -->
     <!-- ========================= -->
+    <!-- Extension -->
+    <jaxb:bindings node="xs:element[@name = 'Extension']/xs:complexType">
+      <inheritance:implements>com.anstis.pmml.model.api.IExtension</inheritance:implements>
+    </jaxb:bindings>
+
     <!-- PMML -->
     <jaxb:bindings node="xs:element[@name ='PMML']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.PMML</inheritance:implements>
@@ -1836,6 +1841,11 @@
     <!-- row -->
     <jaxb:bindings node="xs:element[@name ='row']/xs:complexType">
       <inheritance:implements>com.anstis.pmml.model.api.Row</inheritance:implements>
+      <jaxb:bindings node="xs:sequence/xs:element[@ref = 'Extension']">
+        <jaxb:property>
+          <jaxb:baseType name="com.anstis.pmml.model.api.Extension"/>
+        </jaxb:property>
+      </jaxb:bindings>
     </jaxb:bindings>
 
     <!-- ================ -->

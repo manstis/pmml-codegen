@@ -418,16 +418,17 @@
   </xs:simpleType>
   <xs:element name="Extension">
     <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:restriction base="xs:anyType">
-          <xs:sequence>
-            <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-          <xs:attribute name="extender" type="xs:string" use="optional"/>
-          <xs:attribute name="name" type="xs:string" use="optional"/>
-          <xs:attribute name="value" type="xs:string" use="optional"/>
-        </xs:restriction>
-      </xs:complexContent>
+      <!-- TODO {manstis} How do we map complex content!? -->
+      <!-- <xs:complexContent mixed="true">-->
+      <!--   <xs:restriction base="xs:anyType">-->
+      <!--     <xs:sequence>-->
+      <!--       <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded"/>-->
+      <!--     </xs:sequence>-->
+      <!--   </xs:restriction>-->
+      <!-- </xs:complexContent>-->
+      <xs:attribute name="extender" type="xs:string" use="optional"/>
+      <xs:attribute name="name" type="xs:string" use="optional"/>
+      <xs:attribute name="value" type="xs:string" use="optional"/>
     </xs:complexType>
   </xs:element>
   <xs:simpleType name="NUMBER">
@@ -1017,13 +1018,17 @@
 
   <xs:element name="row">
     <xs:complexType>
-      <xs:complexContent mixed="true">
-        <xs:restriction base="xs:anyType">
-          <xs:sequence>
-            <xs:any processContents="skip" minOccurs="2" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:restriction>
-      </xs:complexContent>
+      <!-- TODO {manstis} How do we map complex content!? -->
+      <!-- <xs:complexContent mixed="true">-->
+      <!--   <xs:restriction base="xs:anyType">-->
+      <!--     <xs:sequence>-->
+      <!--       <xs:any processContents="skip" minOccurs="2" maxOccurs="unbounded"/>-->
+      <!--     </xs:sequence>-->
+      <!--   </xs:restriction>-->
+      <!-- </xs:complexContent>-->
+      <xs:sequence>
+        <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AssociationModel">
