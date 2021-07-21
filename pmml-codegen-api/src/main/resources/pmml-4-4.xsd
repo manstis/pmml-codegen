@@ -36,7 +36,9 @@
       <xs:attribute name="function" type="xs:string" use="required"/>
       <xs:attribute name="mapMissingTo" type="xs:string"/>
       <xs:attribute name="defaultValue" type="xs:string"/>
-      <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD" default="returnInvalid"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD" default="returnInvalid"/> -->
+      <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="MiningModel">
@@ -1119,15 +1121,21 @@
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="name" type="FIELD-NAME" use="required"/>
-      <xs:attribute name="usageType" type="FIELD-USAGE-TYPE" default="active"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="usageType" type="FIELD-USAGE-TYPE" default="active"/>-->
+      <xs:attribute name="usageType" type="FIELD-USAGE-TYPE"/>
       <xs:attribute name="optype" type="OPTYPE"/>
       <xs:attribute name="importance" type="PROB-NUMBER"/>
-      <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD" default="asIs"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD" default="asIs"/>-->
+      <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD"/>
       <xs:attribute name="lowValue" type="NUMBER"/>
       <xs:attribute name="highValue" type="NUMBER"/>
       <xs:attribute name="missingValueReplacement" type="xs:string"/>
       <xs:attribute name="missingValueTreatment" type="MISSING-VALUE-TREATMENT-METHOD"/>
-      <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD" default="returnInvalid"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD" default="returnInvalid"/>-->
+      <xs:attribute name="invalidValueTreatment" type="INVALID-VALUE-TREATMENT-METHOD"/>
       <xs:attribute name="invalidValueReplacement" type="xs:string"/>
     </xs:complexType>
   </xs:element>
@@ -1196,9 +1204,13 @@
       <xs:attribute name="optype" type="OPTYPE"/>
       <xs:attribute name="dataType" type="DATATYPE" use="required"/>
       <xs:attribute name="targetField" type="FIELD-NAME"/>
-      <xs:attribute name="feature" type="RESULT-FEATURE" default="predictedValue"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="feature" type="RESULT-FEATURE" default="predictedValue"/>-->
+      <xs:attribute name="feature" type="RESULT-FEATURE"/>
       <xs:attribute name="value" type="xs:string"/>
-      <xs:attribute name="ruleFeature" type="RULE-FEATURE" default="consequent"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="ruleFeature" type="RULE-FEATURE" default="consequent"/>-->
+      <xs:attribute name="ruleFeature" type="RULE-FEATURE"/>
       <xs:attribute name="algorithm" default="exclusiveRecommendation">
         <xs:simpleType>
           <xs:restriction base="xs:string">
@@ -2419,7 +2431,9 @@
       </xs:sequence>
       <xs:attribute name="mapMissingTo" type="NUMBER"/>
       <xs:attribute name="field" type="FIELD-NAME" use="required"/>
-      <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD" default="asIs"/>
+      <!-- {manstis} Removed "default" attribute as generated code references version specific class -->
+      <!-- <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD" default="asIs"/> -->
+      <xs:attribute name="outliers" type="OUTLIER-TREATMENT-METHOD"/>
     </xs:complexType>
   </xs:element>
 
