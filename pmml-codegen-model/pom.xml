@@ -108,7 +108,22 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>com/anstis/pmml/model/impl/v4_4/ObjectFactory.class</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>com/anstis/pmml/model/impl/v4_4/ObjectFactory.java</exclude>
+          </excludes>
+        </configuration>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -118,6 +133,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 
