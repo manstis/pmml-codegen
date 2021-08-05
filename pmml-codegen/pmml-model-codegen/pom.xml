@@ -18,16 +18,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>pmml-codegen</artifactId>
     <groupId>org.manstis</groupId>
+    <artifactId>pmml-codegen</artifactId>
     <version>0.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>pmml-codegen-api</artifactId>
+  <artifactId>pmml-model-codegen</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>
+    <dependency>
+      <groupId>org.manstis</groupId>
+      <artifactId>pmml-api-codegen</artifactId>
+    </dependency>
     <dependency>
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
@@ -36,17 +40,62 @@
       <groupId>org.jvnet.jaxb2.maven2</groupId>
       <artifactId>maven-jaxb2-plugin</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics-annotate</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.treblereel.gwt.xml.mapper</groupId>
+      <artifactId>common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.treblereel.j2cl.processors</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.vertispan.jsinterop</groupId>
+      <artifactId>base</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
-
     <plugins>
       <plugin>
         <groupId>org.jvnet.jaxb2.maven2</groupId>
         <artifactId>maven-jaxb2-plugin</artifactId>
         <configuration>
-          <generatePackage>com.anstis.pmml.model.api</generatePackage>
+          <generatePackage>com.anstis.pmml.model.impl.v4_4</generatePackage>
           <extension>true</extension>
+          <args>
+            <arg>-Xinheritance</arg>
+            <arg>-Xannotate</arg>
+          </args>
+          <plugins>
+            <plugin>
+              <groupId>org.jvnet.jaxb2_commons</groupId>
+              <artifactId>jaxb2-basics</artifactId>
+            </plugin>
+            <plugin>
+              <groupId>org.jvnet.jaxb2_commons</groupId>
+              <artifactId>jaxb2-basics-annotate</artifactId>
+            </plugin>
+            <plugin>
+              <groupId>org.treblereel.gwt.xml.mapper</groupId>
+              <artifactId>common</artifactId>
+            </plugin>
+            <plugin>
+              <groupId>org.treblereel.j2cl.processors</groupId>
+              <artifactId>annotations</artifactId>
+            </plugin>
+            <plugin>
+              <groupId>com.google.jsinterop</groupId>
+              <artifactId>jsinterop-annotations</artifactId>
+            </plugin>
+          </plugins>
         </configuration>
         <executions>
           <execution>
@@ -62,8 +111,7 @@
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <excludes>
-            <exclude>com/anstis/pmml/model/api/ObjectFactory.class</exclude>
-            <exclude>**/impl/**</exclude>
+            <exclude>com/anstis/pmml/model/impl/v4_4/ObjectFactory.class</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -73,8 +121,7 @@
         <artifactId>maven-source-plugin</artifactId>
         <configuration>
           <excludes>
-            <exclude>com/anstis/pmml/model/api/ObjectFactory.java</exclude>
-            <exclude>**/impl/**</exclude>
+            <exclude>com/anstis/pmml/model/impl/v4_4/ObjectFactory.java</exclude>
           </excludes>
         </configuration>
         <executions>
@@ -86,6 +133,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 
