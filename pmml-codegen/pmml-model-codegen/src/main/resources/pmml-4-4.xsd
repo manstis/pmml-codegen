@@ -1837,7 +1837,9 @@
       <xs:attribute name="operator" type="xs:string" fixed="supersetOf"/>
     </xs:complexType>
   </xs:element>
-  <xs:simpleType name="DELIMITER">
+  <!-- {manstis} Renamed "DELIMITER" type to "DELIMITER-TYPE to avoid case-insensitive name class -->
+  <!-- See https://issues.redhat.com/browse/KOGITO-5669 -->
+  <xs:simpleType name="DELIMITER-TYPE">
     <xs:restriction base="xs:string">
       <xs:enumeration value="sameTimeWindow"/>
       <xs:enumeration value="acrossTimeWindows"/>
@@ -1857,7 +1859,9 @@
       <xs:sequence>
         <xs:element ref="Extension" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="delimiter" type="DELIMITER" use="required"/>
+      <!-- {manstis} Renamed "DELIMITER" type to "DELIMITER-TYPE to avoid case-insensitive name class -->
+      <!-- See https://issues.redhat.com/browse/KOGITO-5669 -->
+      <xs:attribute name="delimiter" type="DELIMITER-TYPE" use="required"/>
       <xs:attribute name="gap" type="GAP" use="required"/>
     </xs:complexType>
   </xs:element>
@@ -2686,7 +2690,9 @@
         <xs:element ref="TimeCycle" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="TimeException" minOccurs="0" maxOccurs="2"/>
       </xs:sequence>
-      <xs:attribute name="type" type="TIME-ANCHOR"/>
+      <!-- {manstis} Renamed "TIME-ANCHOR" type to "TIME-ANCHOR-TYPE to avoid case-insensitive name class -->
+      <!-- See https://issues.redhat.com/browse/KOGITO-5669 -->
+      <xs:attribute name="type" type="TIME-ANCHOR-TYPE"/>
       <xs:attribute name="offset" type="INT-NUMBER"/>
       <xs:attribute name="stepsize" type="INT-NUMBER"/>
       <xs:attribute name="displayName" type="xs:string" use="optional"/>
@@ -2704,7 +2710,9 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:simpleType name="TIME-ANCHOR">
+  <!-- {manstis} Renamed "TIME-ANCHOR" type to "TIME-ANCHOR-TYPE to avoid case-insensitive name class -->
+  <!-- See https://issues.redhat.com/browse/KOGITO-5669 -->
+  <xs:simpleType name="TIME-ANCHOR-TYPE">
     <xs:restriction base="xs:string">
       <xs:enumeration value="dateTimeMillisecondsSince[0]"/>
       <xs:enumeration value="dateTimeMillisecondsSince[1960]"/>
