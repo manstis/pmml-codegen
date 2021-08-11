@@ -57,7 +57,11 @@
       <artifactId>annotations</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.vertispan.jsinterop</groupId>
+      <groupId>com.google.jsinterop</groupId>
+      <artifactId>jsinterop-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.jsinterop</groupId>
       <artifactId>base</artifactId>
     </dependency>
 
