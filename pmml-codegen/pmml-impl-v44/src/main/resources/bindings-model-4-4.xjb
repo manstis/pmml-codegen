@@ -9,7 +9,7 @@
     jaxb:extensionBindingPrefixes="inheritance annox"
     version="2.1">
 
-  <jaxb:bindings schemaLocation="pmml-4-4.xsd" node="/xs:schema">
+  <jaxb:bindings schemaLocation="../../../../src/main/resources/pmml-4-4.xsd" node="/xs:schema">
 
     <jaxb:globalBindings choiceContentProperty="true"/>
 

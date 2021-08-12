@@ -3,32 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>pmml-model-parent</artifactId>
     <groupId>org.manstis</groupId>
+    <artifactId>pmml-model-parent</artifactId>
     <version>0.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>pmml-model-distribution</artifactId>
+  <artifactId>pmml-impl-v44-dist-j2cl</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>
     <dependency>
       <groupId>org.manstis</groupId>
-      <artifactId>pmml-api-codegen</artifactId>
+      <artifactId>pmml-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.manstis</groupId>
-      <artifactId>pmml-api-codegen</artifactId>
+      <artifactId>pmml-api</artifactId>
       <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>org.manstis</groupId>
-      <artifactId>pmml-model-codegen</artifactId>
+      <artifactId>pmml-impl-v44-browsers</artifactId>
     </dependency>
     <dependency>
       <groupId>org.manstis</groupId>
-      <artifactId>pmml-model-codegen</artifactId>
+      <artifactId>pmml-impl-v44-browsers</artifactId>
       <classifier>sources</classifier>
     </dependency>
   </dependencies>
@@ -57,14 +57,14 @@
             <configuration>
               <artifactSet>
                 <excludes>
-                  <exclude>org.jvnet.jaxb2.maven2:maven-jaxb2-plugin</exclude>
-                  <exclude>org.jvnet.jaxb2.maven2:maven-jaxb2-plugin-core</exclude>
                   <exclude>org.slf4j:slf4j-api</exclude>
+                  <exclude>org.slf4j:jcl-over-slf4j</exclude>
+                  <exclude>org.apache.ant:ant</exclude>
+                  <exclude>org.apache.ant:ant-launcher</exclude>
                   <exclude>org.apache.commons:commons-lang3</exclude>
-                  <exclude>com.sun.org.apache.xml.internal:resolver</exclude>
-                  <exclude>org.glassfish.jaxb:txw2</exclude>
+                  <exclude>org.apache.maven.plugin-tools:maven-plugin-annotations</exclude>
+                  <exclude>org.apache.maven:maven-artifact</exclude>
                   <exclude>org.apache.maven:maven-plugin-api</exclude>
-                  <exclude>org.sonatype.plexus:plexus-build-api</exclude>
                   <exclude>org.apache.maven:maven-project</exclude>
                   <exclude>org.apache.maven:maven-settings</exclude>
                   <exclude>org.apache.maven:maven-profile</exclude>
@@ -77,35 +77,38 @@
                   <exclude>junit:junit</exclude>
                   <exclude>classworlds:classworlds</exclude>
                   <exclude>org.codehaus.plexus:plexus-utils</exclude>
-                  <exclude>org.jvnet.jaxb2.maven2:maven-jaxb23-plugin</exclude>
+                  <exclude>org.sonatype.plexus:plexus-build-api</exclude>
+                  <exclude>org.glassfish.jaxb:txw2</exclude>
                   <exclude>org.glassfish.jaxb:jaxb-runtime</exclude>
                   <exclude>org.glassfish.jaxb:jaxb-core</exclude>
-                  <exclude>org.jvnet.staxex:stax-ex</exclude>
-                  <exclude>com.sun.xml.fastinfoset:FastInfoset</exclude>
                   <exclude>org.glassfish.jaxb:jaxb-xjc-jdk9</exclude>
                   <exclude>org.glassfish.jaxb:jaxb-xjc</exclude>
-                  <exclude>com.sun.xml.dtd-parser:dtd-parser</exclude>
                   <exclude>org.glassfish.jaxb:xsom</exclude>
                   <exclude>org.glassfish.jaxb:codemodel</exclude>
-                  <exclude>com.sun.xml.bind.external</exclude>
-                  <exclude>com.sun.istack:istack-commons-tools</exclude>
-                  <exclude>org.apache.ant:ant</exclude>
-                  <exclude>org.apache.ant:ant-launcher</exclude>
-                  <exclude>com.sun.istack:istack-commons-runtime</exclude>
-                  <exclude>relaxngDatatype:relaxngDatatype</exclude>
                   <exclude>com.sun.activation:javax.activation</exclude>
-                  <exclude>org.apache.maven.plugin-tools:maven-plugin-annotations</exclude>
-                  <exclude>org.apache.maven:maven-artifact</exclude>
+                  <exclude>com.sun.istack:istack-commons-tools</exclude>
+                  <exclude>com.sun.istack:istack-commons-runtime</exclude>
+                  <exclude>com.sun.org.apache.xml.internal:resolver</exclude>
+                  <exclude>com.sun.xml.fastinfoset:FastInfoset</exclude>
+                  <exclude>com.sun.xml.dtd-parser:dtd-parser</exclude>
+                  <exclude>com.sun.xml.bind.external</exclude>
+                  <exclude>relaxngDatatype:relaxngDatatype</exclude>
+                  <exclude>org.jvnet.jaxb2.maven2:maven-jaxb2-plugin</exclude>
+                  <exclude>org.jvnet.jaxb2.maven2:maven-jaxb2-plugin-core</exclude>
+                  <exclude>org.jvnet.jaxb2.maven2:maven-jaxb23-plugin</exclude>
+                  <exclude>org.jvnet.staxex:stax-ex</exclude>
                   <exclude>org.jvnet.jaxb2_commons:jaxb2-basics</exclude>
                   <exclude>org.jvnet.jaxb2_commons:jaxb2-basics-runtime</exclude>
                   <exclude>org.jvnet.jaxb2_commons:jaxb2-basics-tools</exclude>
-                  <exclude>commons-beanutils:commons-beanutils</exclude>
-                  <exclude>commons-collections:commons-collections</exclude>
-                  <exclude>org.slf4j:jcl-over-slf4j</exclude>
-                  <exclude>com.google.code.javaparser:javaparser</exclude>
                   <exclude>org.jvnet.jaxb2_commons:jaxb2-basics-annotate</exclude>
                   <exclude>org.jvnet.annox:annox</exclude>
                   <exclude>commons-io:commons-io</exclude>
+                  <exclude>commons-beanutils:commons-beanutils</exclude>
+                  <exclude>commons-collections:commons-collections</exclude>
+                  <exclude>com.google.code.javaparser:javaparser</exclude>
+                  <!-- We need these as an explicit dependency in order for the J2CL plugin to correctly replace -->
+                  <!-- If the classes are included in the shaded model JAR then the plugin does not see them as -->
+                  <!-- a dependency and hence does not replace their implementation -->
                   <exclude>com.google.jsinterop:base</exclude>
                   <exclude>com.google.jsinterop:jsinterop-annotations</exclude>
                 </excludes>

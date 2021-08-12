@@ -18,13 +18,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>pmml-codegen</artifactId>
     <groupId>org.manstis</groupId>
+    <artifactId>pmml-codegen</artifactId>
     <version>0.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>pmml-api-codegen</artifactId>
+  <artifactId>pmml-api</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>
@@ -46,6 +46,8 @@
         <artifactId>maven-jaxb2-plugin</artifactId>
         <configuration>
           <generatePackage>com.anstis.pmml.model.api</generatePackage>
+          <bindingDirectory>${project.basedir}/src/main/resources</bindingDirectory>
+          <schemaDirectory>${project.basedir}/../src/main/resources</schemaDirectory>
           <extension>true</extension>
         </configuration>
         <executions>
